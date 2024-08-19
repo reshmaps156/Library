@@ -14,7 +14,7 @@ function Footer() {
     return (
         <>
             <footer style={{ backgroundColor: '#2C5F2D', color: '#E5E5E5' }}>
-                <Row className=' mt-5 p-5' >
+                <Row className='  p-5' >
                 <Col sm={12} md={2} className='mt-5'>
                         <div>
                             <h5 className='mb-5'>Mission</h5>
