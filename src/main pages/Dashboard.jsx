@@ -2,12 +2,12 @@ import {  faBagShopping, faBars, faBook,  faBookmark,  faMagnifyingGlass,  faPow
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useState } from 'react'
 import { Sidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Books from '../subpages/Books';
 import Profile from '../subpages/Profile';
 import SavedItem from '../subpages/SavedItem';
 import Borrow from '../subpages/Borrow';
-import Overview from '../subpages/Overview';
+
 
 
 
@@ -19,7 +19,10 @@ function Dashboard() {
     const [dashboard,setDashboard] = useState(false)
     const [saved,setSaved] = useState(false)
     const [borrow,setBorrow] = useState(false)
+    const navigate = useNavigate()
 
+    
+    
     const handleCollpase = ()=>{
         setIsCollpased(!isCollapsed)
     }
@@ -58,6 +61,11 @@ function Dashboard() {
         setBook(false)
         setDashboard(false)
         setSaved(false)
+    }
+    const handleLogout = ()=>{
+        sessionStorage.removeItem('token')
+        sessionStorage.removeItem('existingUser')
+        navigate('/login')
     }
    useEffect(()=>{
     const handleResize = ()=>{
@@ -117,10 +125,12 @@ function Dashboard() {
                         <input type="text" className='form-control' placeholder='Search'/>
                         <div className=' d-flex align-items-center' style={{marginLeft:'-30px'}}><FontAwesomeIcon icon={faMagnifyingGlass} className='text-secondary'/></div>
                         </form>
-                    <button className='btn btn-warning'><FontAwesomeIcon icon={faPowerOff} className='me-2'/>Logout</button>
+                    <button type='button' className='btn btn-warning' onClick={handleLogout}>
+                        <FontAwesomeIcon icon={faPowerOff} className='me-2' />Logout
+                        </button>
                 </div>
                {
-                book && <Books/>  || profile && <Profile/> || dashboard && <Overview/>  || saved && <SavedItem/> || borrow && <Borrow/>
+                book && <Books/>  || profile && <Profile/>  || saved && <SavedItem/> || borrow && <Borrow/>
                }
 
             </div>
