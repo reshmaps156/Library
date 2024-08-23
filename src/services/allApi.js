@@ -18,3 +18,16 @@ export const addBookApi = async(reqBody)=>{
 export const allBookApi = async()=>{
    return await commonApi('GET',`${serverUrl}/allbooks`,"")
 }
+
+//save book
+export const saveBookApi = async (userId,sBook)=>{
+   return await commonApi('POST',`${serverUrl}/save-book`,{userId,sBook})
+}
+
+export const getSavedBookApi = async(userId)=>{
+   return await commonApi('GET',`${serverUrl}/save-book/${userId}`)
+}
+//delete saved
+export const deleteBookApi = async (userId, bookId) => {
+   return await commonApi('DELETE', `${serverUrl}/delete-book/${userId}/${bookId}`);
+};

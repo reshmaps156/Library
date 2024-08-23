@@ -67,6 +67,11 @@ function Adminpanel() {
         setIsBooks(false)
         setIsStatus(true)
     }
+    const handleLogout = () => {
+        sessionStorage.removeItem('token')
+        sessionStorage.removeItem('existingUser')
+        navigate('/login')
+    }
     const handleAddBook =async()=>{
         const {bookname,author,bookImg,category,availabilty} = bookData
         if(!bookname || !author || !bookImg ||!category || !availabilty){
@@ -131,7 +136,7 @@ function Adminpanel() {
                         <MenuItem className='mt-2' onClick={handleBooks} > <FontAwesomeIcon icon={faBookmark} className='me-3 ms-2' size='xl' /> Books </MenuItem>
                         <MenuItem className='mt-2' onClick={handleStatus}> <FontAwesomeIcon icon={faCalendarCheck} className='me-3 ms-2' size='xl' />Status </MenuItem>
                         <MenuItem onClick={handleShow} className='mt-2'><FontAwesomeIcon icon={faSquarePlus} className='me-3 ms-2' size='xl' />Add Book</MenuItem>
-                        <MenuItem className='mt-2' > <FontAwesomeIcon icon={faPowerOff} className='me-3 ms-2' size='xl' /> Logout </MenuItem>
+                        <MenuItem className='mt-2' onClick={handleLogout}> <FontAwesomeIcon icon={faPowerOff} className='me-3 ms-2' size='xl' /> Logout </MenuItem>
 
                     </Menu>
                     <Modal show={show} onHide={handleClose} >

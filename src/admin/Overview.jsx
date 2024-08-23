@@ -9,9 +9,7 @@ function Overview() {
     const [totalBooks,setTotalBooks] = useState(0)
     const [allBookData,setAllBookData] = useState([])
    
-       
-    //   const totalBook = allBookData.reduce((sum,book)=>sum+book.availabilty)
-    //   console.log(totalBook);
+    
       
     const allBooks = async()=>{
         const result = await allBookApi()
@@ -29,7 +27,7 @@ function Overview() {
         allBooks()
         
 
-      },[allBooks])
+      },[])
      
       
       
