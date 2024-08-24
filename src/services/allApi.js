@@ -31,3 +31,31 @@ export const getSavedBookApi = async(userId)=>{
 export const deleteBookApi = async (userId, bookId) => {
    return await commonApi('DELETE', `${serverUrl}/delete-book/${userId}/${bookId}`);
 };
+
+export const reserveBookApi = async (userId, bookData) => {
+   return await commonApi('POST', `${serverUrl}/reserve-book/${userId}`, bookData);
+};
+
+export const getReservedBooksApi = async () => {
+   return await commonApi('GET', `${serverUrl}/reserved-books`);
+ };
+
+ export const rejectReservedBookApi = async (userId, bookId) => {
+   return await commonApi('DELETE', `${serverUrl}/reserved-book/${userId}/${bookId}`);
+};
+
+export const acceptReservationApi = async (reservationData) => {
+   return await commonApi('POST', `${serverUrl}/accept-reservation`, reservationData);
+ };
+
+ export const getAcceptedReservationsApi = async () => {
+   return await commonApi('GET', `${serverUrl}/accepted-reservations`);
+ };
+
+ export const getUserBorrowedBooksApi = async (userId) => {
+   return await commonApi('GET', `${serverUrl}/user-borrowed-books/${userId}`);
+ };
+
+ export const markBookReturnedApi = async(id)=>{
+   return await commonApi('DELETE',`${serverUrl}/return-book/${id}`)
+ }

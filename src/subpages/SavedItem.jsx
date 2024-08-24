@@ -4,12 +4,18 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Card from 'react-bootstrap/Card';
 import { useSelector } from 'react-redux';
 import { deleteBookApi, getSavedBookApi, saveBookApi } from '../services/allApi';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 
 function SavedItem() {
     const [userSaved, setUserSaved] = useState([]);
     const savedBookArray = useSelector((state) => state.savedReducer);
     const userDetails = JSON.parse(sessionStorage.getItem("existingUser"));
     const userId = userDetails._id;
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
    
     
     const savebooksfun = async () => {
@@ -67,7 +73,7 @@ function SavedItem() {
                             <Card.Title className='text-center'>{book.bookname}</Card.Title>
                             <p className='text-center text-secondary'>{book.author}</p>
                             <Card.Text className='d-flex justify-content-between'>
-                                <button className='btn btn-outline-success'>
+                                <button className='btn btn-outline-success' onClick={handleShow}>
                                     <FontAwesomeIcon icon={faBagShopping} />
                                 </button>
                                 <button className='btn btn-outline-primary' onClick={()=>deleteBookFn(book._id)}>
@@ -76,6 +82,20 @@ function SavedItem() {
                             </Card.Text>
                         </Card.Body>
                     </Card>
+                    <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Modal heading</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Woohoo, you are reading this text in a modal!</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={handleClose}>
+            Save Changes
+          </Button>
+        </Modal.Footer>
+      </Modal>
                 </div>
             ))}
         </div>
