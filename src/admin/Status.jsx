@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Table from 'react-bootstrap/Table';
-import { getAcceptedReservationsApi, markBookReturnedApi } from '../services/allApi'; // Ensure the path is correct
+import { getAcceptedReservationsApi, markBookReturnedApi } from '../services/allApi'; 
 
 function Status() {
   const [acceptedReservations, setAcceptedReservations] = useState([]);

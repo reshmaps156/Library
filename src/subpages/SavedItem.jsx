@@ -20,13 +20,13 @@ function SavedItem() {
     
     const savebooksfun = async () => {
       try {
-          // Deduplicate the savedBookArray by _id
+         
           const uniqueBooks = Array.from(new Set(savedBookArray.map(book => book._id)))
               .map(id => {
                   return savedBookArray.find(book => book._id === id);
               });
   
-          // Debug: Log the deduplicated books
+          
           console.log('Unique books:', uniqueBooks);
   
           const result = await saveBookApi(userId, uniqueBooks);
@@ -50,7 +50,7 @@ function SavedItem() {
       try {
           const result = await deleteBookApi(userId, bookId);
           console.log('Delete result:', result);
-          // Refresh the list of saved books
+         
           getSavedBookfn();
       } catch (error) {
           console.error('Error deleting book:', error);

@@ -9,7 +9,7 @@ import Login from './user-management/Login'
 import Dashboard from './main pages/Dashboard'
 import ProtectedRoutes from './utils/ProtectedRoutes'
 import Adminpanel from './main pages/Adminpanel'
-import SavedItem from './subpages/SavedItem'
+import Pagenotfound from './subpages/Pagenotfound'
 
 function App() {
   
@@ -26,7 +26,7 @@ function App() {
           <Route path='/admin-panel' element={<Adminpanel/>}/>
           
         </Route>
-
+        <Route path='*' element={<Pagenotfound/>}/>
       </Routes>
       <Footer/>
     </>

@@ -2,6 +2,7 @@ import { faFacebook, faInstagram, faXTwitter, faYoutube } from '@fortawesome/fre
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 import { Col, Row } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
 
 
@@ -36,10 +37,10 @@ function Footer() {
                         <div>
                             <h5 className='mb-5'>Quick Links</h5>
 
-                            <p>Home</p>
-                            <p>Catalog</p>
-                            <p>Login</p>
-                            <p>Contact Us</p>
+                            <Link to={'/'} style={{textDecoration:'none',color:'#E5E5E5'}}><p>Home</p></Link>
+                            <Link to={'*'} style={{textDecoration:'none',color:'#E5E5E5'}}><p>Catalog</p></Link>
+                            <Link to={'/login'} style={{textDecoration:'none',color:'#E5E5E5'}}><p>Login</p></Link>
+                            <Link to={'*'} style={{textDecoration:'none',color:'#E5E5E5'}}><p>Contact Us</p></Link>
                         </div>
                     </Col>
 

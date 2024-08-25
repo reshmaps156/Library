@@ -11,6 +11,7 @@ import Button from 'react-bootstrap/Button';
 import { ToastContainer, Zoom, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { addBookApi } from '../services/allApi';
+import { useNavigate } from 'react-router-dom';
 
 function Adminpanel() {
     const [show, setShow] = useState(false);
@@ -26,6 +27,7 @@ function Adminpanel() {
         category:"",
         availabilty: ""
     })
+    const navigate = useNavigate()
 
     const handleCancel = () => {
         setBookData({

@@ -1,10 +1,10 @@
 
 import React, { useState } from 'react'
-import { json, Link, useNavigate } from 'react-router-dom'
+import {  Link, useNavigate } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { loginApi } from '../services/allApi';
-
+import './register.css'
 
 function Login() {
     const [loginData, setLoginData] = useState({
@@ -49,8 +49,8 @@ function Login() {
     
 
     return (
-        <div style={{ width: '100%', height: '100vh' }} className=' d-flex align-items-center justify-content-center' >
-            <div className='shadow p-5' style={{ width: '500px' }}>
+        <div style={{ width: '100%', height: '100vh' }} className=' d-flex align-items-center justify-content-center register-container ' >
+            <div className='shadow p-5 register-form' style={{ width: '500px' }}>
 
                 <h3 className='text-center mb-3' style={{ color: '#2C5F2D' }}>Sign In</h3>
                 <form action="">

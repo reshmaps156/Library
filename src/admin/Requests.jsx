@@ -22,7 +22,7 @@ function Requests() {
 
   const handleAccept = async (reservation) => {
     try {
-      const issueDate = new Date().toISOString(); // Current date as issue date
+      const issueDate = new Date().toISOString(); 
       const { userId, bookId, username, bookName, author } = reservation;
       const returnDate = new Date(issueDate);
       returnDate.setDate(returnDate.getDate() + 7);
@@ -37,7 +37,7 @@ function Requests() {
         returnDate: returnDate.toISOString()
       });
 
-      // Optionally remove the accepted reservation from the list
+      
       setReservedBooks((prevBooks) =>
         prevBooks.filter(
           (reservedBook) => reservedBook._id !== reservation._id

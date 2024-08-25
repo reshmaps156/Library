@@ -1,3 +1,25 @@
 .heroFont{
     font-size: 60px;
 }
+.card {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card-title {
+    font-size: 1.25rem;
+    color: #2C5F2D;
+}
+
+.card-subtitle {
+    color: #757575;
+    font-size: 1rem;
+}
+
