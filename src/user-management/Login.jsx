@@ -64,7 +64,7 @@ function Login() {
                     </div>
 
                     <div className="mb-3">
-                        <button type='button' onClick={handleLogin} className='btn w-100' style={{ backgroundColor: '#2C5F2D', color: 'white' }}>Login</button>
+                        <button type='button' onClick={handleLogin} className='btn w-100 btn-style' style={{ backgroundColor: '#2C5F2D', color: 'white' }}>Login</button>
                         New User ? <Link to={'/register'}>Register</Link>
                     </div>
 

@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { registerApi } from '../services/allApi';
 import { ToastContainer, Zoom, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import './register.css'; // Import your CSS file
+import './register.css'; 
 
 function Register() {
     const [userDetails, setUserDetails] = useState({
@@ -82,7 +82,7 @@ function Register() {
                     <button
                         type='button'
                         onClick={handleRegister}
-                        className='btn btn-primary w-100'
+                        className='btn btn-style text-white w-100'
                     >
                         Register
                     </button>

@@ -39,7 +39,7 @@
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
-.register-form .btn-primary {
+.register-form .btn-style {
     background-color: #2C5F2D;
     border: none;
     border-radius: 8px;
@@ -48,7 +48,7 @@
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.register-form .btn-primary:hover {
+.register-form .btn-style:hover {
     background-color: #244d29;
     transform: scale(1.05);
 }
