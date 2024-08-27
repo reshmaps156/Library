@@ -10,11 +10,11 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { ToastContainer, Zoom, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Editbooks from './Editbooks';
 
 function Books() {
   const [allBookData, setAllBookData] = useState([]);
   const [showModal1, setShowModal1] = useState(false);
-  const [showModal2, setShowModal2] = useState(false);
   const [selectedBook, setSelectedBook] = useState(null);
   const [reservedBooks, setReservedBooks] = useState([]);
 
@@ -22,15 +22,14 @@ function Books() {
   const user = JSON.parse(sessionStorage.getItem("existingUser"));
   const dispatch = useDispatch();
   const handleCloseModal1 = () => setShowModal1(false);
-  const handleCloseModal2 = () => setShowModal2(false);
-  const handleShowModal2 = () => setShowModal2(true);
+
 
   const handleDeleteBook = async (book) => {
     const result = await removeBookApi(book._id)
     if (result.status == 200) {
       toast.success('Book Deleted')
     }
-    console.log(result);
+
 
   }
 
@@ -82,7 +81,7 @@ function Books() {
     };
 
     fetchBooks();
-  }, [allBookData]);
+  }, []);
 
   return (
     <div className='row p-3'>
@@ -115,9 +114,8 @@ function Books() {
                   <button
                     type='button'
                     className='btn btn-outline-warning'
-                    onClick={handleShowModal2}
                   >
-                    <FontAwesomeIcon icon={faPenToSquare} />
+                    <Editbooks bookData={books}/>
                   </button>
                   <button
                     className='btn btn-outline-primary'
@@ -128,40 +126,7 @@ function Books() {
                 </Card.Text>
               }
             </Card.Body>
-            <Modal show={showModal2} onHide={handleCloseModal2}>
-              <Modal.Header closeButton>
-                <Modal.Title>Edit Book</Modal.Title>
-              </Modal.Header>
-              <Modal.Body>
-                <div className="mb-3">
-                  <input type="text" className='form-control' placeholder='Book Name'/>
-                </div>
-                <div className="mb-3">
-                  <input type="text" className='form-control' placeholder='Author'/>
-                </div>
-                <div className="mb-3">
-                  <input type="text" className='form-control' placeholder='Book Image'/>
-                </div>
-                <div className="mb-3">
-                  <input type="text" className='form-control' placeholder='Category'/>
-                </div>
-                <div className="mb-3">
-                  <input type="text" className='form-control' placeholder='availabilty'/>
-                </div>
-                <div className="mb-3">
-                  <input type="text" className='form-control' placeholder='status'/>
-                </div>
-              
-              </Modal.Body>
-              <Modal.Footer>
-                <Button variant="secondary" onClick={handleCloseModal2}>
-                  Cancel
-                </Button>
-                <Button variant="success" onClick={handleCloseModal2}>
-                  Edit
-                </Button>
-              </Modal.Footer>
-            </Modal>
+
 
           </Card>
         </div>

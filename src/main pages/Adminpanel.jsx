@@ -80,7 +80,7 @@ function Adminpanel() {
             toast.info('Please fill the form completely')
         }else{
             const result = await addBookApi(bookData)
-            console.log(result);
+       
             
             if(result.data){
                 toast.success('Book added successfully')

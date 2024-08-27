@@ -27,6 +27,10 @@ export const removeBookApi = async(bookId)=>{
 export const saveBookApi = async (userId,sBook)=>{
    return await commonApi('POST',`${serverUrl}/save-book`,{userId,sBook})
 }
+//edit books
+export const editBookApi = async(bookId,reqBody)=>{
+   return await commonApi('PUT',`${serverUrl}/edit-book/${bookId}`,reqBody)
+}
 
 export const getSavedBookApi = async(userId)=>{
    return await commonApi('GET',`${serverUrl}/save-book/${userId}`)
