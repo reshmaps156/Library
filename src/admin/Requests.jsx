@@ -64,8 +64,8 @@ function Requests() {
   };
 
   return (
-    <div className='p-5'>
-      <Table striped>
+    <div className='p-md-5 px-5'>
+      <Table striped responsive className='table'>
         <thead>
           <tr>
             <th>#</th>

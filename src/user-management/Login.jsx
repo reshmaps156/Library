@@ -22,7 +22,8 @@ function Login() {
            
             const result = await loginApi(loginData)
             
-
+            console.log(result);
+            
             sessionStorage.setItem("existingUser", JSON.stringify(result.data.existingUser))
             sessionStorage.setItem("token", result.data.token)
             setLoginData({
@@ -30,11 +31,11 @@ function Login() {
                 password: ""
             })
             
-            if (result.status == 200) {
+            if (result) {
                 toast.success('Login successful')
 
             } else {
-                toast.error(result.response.data)
+                toast.error('result.response.data')
 
             }
             if(result.data.existingUser.access != "admin"){
@@ -42,7 +43,9 @@ function Login() {
                     navigate('/dashboard')
                 }, 2000);
             }else{
+               setTimeout(() => {
                 navigate('/admin-panel')
+               }, 2000);
             }
         }
     }

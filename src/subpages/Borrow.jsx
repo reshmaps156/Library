@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { getUserBorrowedBooksApi } from '../services/allApi'; 
+import { Table } from 'react-bootstrap';
+
 
 function Borrow() {
   const [borrowedBooks, setBorrowedBooks] = useState([]);
@@ -25,7 +27,7 @@ function Borrow() {
   return (
     <>
       <div className='p-md-5'>
-        <table className='table shadow'>
+        <Table className='table shadow ' responsive striped>
           <thead>
             <tr>
               <th>No</th>
@@ -44,7 +46,7 @@ function Borrow() {
               </tr>
             ))}
           </tbody>
-        </table>
+        </Table>
       </div>
     </>
   );

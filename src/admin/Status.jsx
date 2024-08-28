@@ -33,7 +33,7 @@ function Status() {
 
   return (
     <div className='p-5'>
-      <Table striped>
+      <Table striped className='table' responsive>
         <thead>
           <tr>
             <th>#</th>

@@ -113,13 +113,13 @@ function Dashboard() {
             </div>
             <div className="w-100 ">
                 <div className='w-100 d-flex justify-content-between mb-4 px-md-5 py-3'>
-                   {book ? <Search/> :<div></div>}
+                   {book ? <Search /> :<div></div>}
                     <button type='button' className='btn btn-warning' onClick={handleLogout}>
                         <FontAwesomeIcon icon={faPowerOff} className='me-2' />Logout
                     </button>
                 </div>
                 {
-                    book && <Books /> || profile && <Profile /> || saved && <SavedItem /> || borrow && <Borrow />
+                    book && <Books /> || profile && <Profile /> || saved && <SavedItem /> || borrow && <Borrow/>
                 }
 
             </div>
