@@ -1,10 +1,11 @@
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { editBookApi } from '../services/allApi';
 import 'react-toastify/dist/ReactToastify.css';
+import { editResponseContext } from '../context/DataShare';
 
 function Editbooks({ bookData }) {
     const [show, setShow] = useState(false);
@@ -16,8 +17,9 @@ function Editbooks({ bookData }) {
         availabilty: bookData.availabilty,
         status: bookData.status
     })
+    const {setEditResponse} = useContext(editResponseContext)
     const bookId = bookData._id
-    
+  
     
 
     const handleClose = () => setShow(false);
@@ -38,10 +40,11 @@ function Editbooks({ bookData }) {
             alert('Please fill the form')
         }else{
             const result = await editBookApi(bookId,editBookDetails)
-            console.log(result);
+           
             if(result.status==200){
                 alert('Book Updated Successfully')
                 handleClose()
+                setEditResponse(result)
             }else{
                 alert('Something went wrong')
             }
@@ -49,7 +52,7 @@ function Editbooks({ bookData }) {
         }
       
     }
-    console.log(editBookDetails);
+   
 
     return (
         <>

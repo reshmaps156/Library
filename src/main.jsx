@@ -6,12 +6,19 @@ import './bootstrap.min.css'
 import { BrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import store from './react-redux/store.js'
+import DataShare from './context/DataShare.jsx'
 
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <BrowserRouter>
-      <Provider store={store}><App /></Provider>
-    </BrowserRouter>
+  
+      <Provider store={store}>
+        <DataShare>
+        <BrowserRouter>
+          <App />
+          </BrowserRouter>
+          </DataShare>
+        </Provider>
+   
   </StrictMode>,
 )

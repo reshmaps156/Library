@@ -1,7 +1,7 @@
-import { faBars, faBookmark, faCalendarCheck, faChartLine, faClipboard, faFileArrowDown, faPowerOff, faSquarePlus } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faBookmark, faCalendarCheck, faChartLine, faFileArrowDown, faPowerOff, faSquarePlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useEffect, useState } from 'react'
-import { Sidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
+import React, { useContext, useEffect, useState } from 'react'
+import { Sidebar, Menu, MenuItem} from 'react-pro-sidebar';
 import Overview from '../admin/Overview';
 import Requests from '../admin/Requests';
 import Books from '../subpages/Books';
@@ -12,6 +12,8 @@ import { ToastContainer, Zoom, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { addBookApi } from '../services/allApi';
 import { useNavigate } from 'react-router-dom';
+import { addResponseContext } from '../context/DataShare';
+
 
 function Adminpanel() {
     const [show, setShow] = useState(false);
@@ -20,6 +22,7 @@ function Adminpanel() {
     const [isRequest, setIsRequest] = useState(false)
     const [isBook, setIsBooks] = useState(false)
     const [isStatus, setIsStatus] = useState(false)
+    const {setAddResponse }= useContext(addResponseContext)
     const [bookData, setBookData] = useState({
         bookname: "",
         author: "",
@@ -84,6 +87,7 @@ function Adminpanel() {
             
             if(result.data){
                 toast.success('Book added successfully')
+                setAddResponse(result)
                 setBookData({
                     bookname: "",
                     author: "",

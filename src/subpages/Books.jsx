@@ -1,7 +1,7 @@
 import { faBagShopping, faPenToSquare, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import { faBookmark } from '@fortawesome/free-solid-svg-icons/faBookmark';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useEffect, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 import Card from 'react-bootstrap/Card';
 import { allBookApi, removeBookApi, reserveBookApi } from '../services/allApi';
 import { useDispatch } from 'react-redux';
@@ -11,13 +11,16 @@ import Modal from 'react-bootstrap/Modal';
 import { ToastContainer, Zoom, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Editbooks from './Editbooks';
+import { addResponseContext, deleteResponseContext, editResponseContext } from '../context/DataShare';
 
 function Books() {
   const [allBookData, setAllBookData] = useState([]);
   const [showModal1, setShowModal1] = useState(false);
   const [selectedBook, setSelectedBook] = useState(null);
   const [reservedBooks, setReservedBooks] = useState([]);
-
+  const {addResponse} = useContext(addResponseContext)
+  const {editResponse} = useContext(editResponseContext)
+  const {deleteResponse,setDeleteResponse} = useContext(deleteResponseContext)
 
   const user = JSON.parse(sessionStorage.getItem("existingUser"));
   const dispatch = useDispatch();
@@ -28,6 +31,7 @@ function Books() {
     const result = await removeBookApi(book._id)
     if (result.status == 200) {
       toast.success('Book Deleted')
+      setDeleteResponse(result)
     }
 
 
@@ -79,9 +83,9 @@ function Books() {
       const bookData = result.data;
       setAllBookData(bookData);
     };
-
+   
     fetchBooks();
-  }, []);
+  }, [addResponse,editResponse,deleteResponse]);
 
   return (
     <div className='row p-3'>
