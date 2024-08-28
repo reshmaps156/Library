@@ -91,7 +91,7 @@ function Editbooks({ bookData }) {
                     <Button variant="warning" onClick={handleCancel}>
                         Cancel
                     </Button>
-                    <Button variant="primary" onClick={handleEdit}>
+                    <Button variant="success" onClick={handleEdit}>
                         Update
                     </Button>
                 </Modal.Footer>
