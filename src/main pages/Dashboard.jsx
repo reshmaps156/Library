@@ -7,6 +7,7 @@ import Books from '../subpages/Books';
 import Profile from '../subpages/Profile';
 import SavedItem from '../subpages/SavedItem';
 import Borrow from '../subpages/Borrow';
+import Search from '../utils/Search';
 
 
 
@@ -112,10 +113,7 @@ function Dashboard() {
             </div>
             <div className="w-100 ">
                 <div className='w-100 d-flex justify-content-between mb-4 px-md-5 py-3'>
-                    <form className='d-flex'>
-                        <input type="text" className='form-control' placeholder='Search' />
-                        <div className=' d-flex align-items-center' style={{ marginLeft: '-30px' }}><FontAwesomeIcon icon={faMagnifyingGlass} className='text-secondary' /></div>
-                    </form>
+                   {book ? <Search/> :<div></div>}
                     <button type='button' className='btn btn-warning' onClick={handleLogout}>
                         <FontAwesomeIcon icon={faPowerOff} className='me-2' />Logout
                     </button>

@@ -11,7 +11,7 @@ function Borrow() {
       try {
         const result = await getUserBorrowedBooksApi(userId);
         setBorrowedBooks(result.data);
-        console.log(result);
+        
         
       } catch (error) {
         console.error('Failed to fetch borrowed books:', error);
@@ -20,7 +20,7 @@ function Borrow() {
 
     fetchBorrowedBooks();
   }, [userId]);
-console.log(borrowedBooks);
+
 
   return (
     <>

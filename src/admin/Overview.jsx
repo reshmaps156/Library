@@ -1,22 +1,23 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { buildStyles, CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import { allBookApi, getAcceptedReservationsApi, getReservedBooksApi } from '../services/allApi';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBook, faInbox, faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import './overview.css'; 
+import { searchKeyContext } from '../context/DataShare';
 
 function Overview() {
     const [totalBooks, setTotalBooks] = useState(0);
     const [totalIssue, setTotalIssue] = useState(0);
     const [totalRequest, setTotalRequest] = useState(0);
+    const {searchKey}= useContext(searchKeyContext)
 
     const fetchData = async () => {
         
-        const booksResult = await allBookApi();
+        const booksResult = await allBookApi(searchKey);
         const bookData = booksResult.data;
-     
-        
+
         const totalAvailable =bookData.map((item)=>item.availabilty).reduce((a,b)=>a+b)
         setTotalBooks(totalAvailable)
 

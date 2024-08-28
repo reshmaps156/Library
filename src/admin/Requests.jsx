@@ -17,15 +17,15 @@ function Requests() {
 
     fetchReservedBooks();
   }, []);
-  console.log(reservedBooks);
+  
   
 
   const handleAccept = async (reservation) => {
     try {
-      const issueDate = new Date().toISOString(); 
-      const { userId, bookId, username, bookName, author } = reservation;
-      const returnDate = new Date(issueDate);
-      returnDate.setDate(returnDate.getDate() + 7);
+        const issueDate = new Date().toISOString(); 
+        const { userId, bookId, username, bookName, author } = reservation;
+        const returnDate = new Date(issueDate);
+        returnDate.setDate(returnDate.getDate() + 7);
 
       await acceptReservationApi({
         userId,

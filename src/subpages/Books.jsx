@@ -11,7 +11,7 @@ import Modal from 'react-bootstrap/Modal';
 import { ToastContainer, Zoom, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Editbooks from './Editbooks';
-import { addResponseContext, deleteResponseContext, editResponseContext } from '../context/DataShare';
+import { addResponseContext, deleteResponseContext, editResponseContext, searchKeyContext } from '../context/DataShare';
 
 function Books() {
   const [allBookData, setAllBookData] = useState([]);
@@ -21,7 +21,7 @@ function Books() {
   const {addResponse} = useContext(addResponseContext)
   const {editResponse} = useContext(editResponseContext)
   const {deleteResponse,setDeleteResponse} = useContext(deleteResponseContext)
-
+  const {searchKey} = useContext(searchKeyContext)
   const user = JSON.parse(sessionStorage.getItem("existingUser"));
   const dispatch = useDispatch();
   const handleCloseModal1 = () => setShowModal1(false);
@@ -79,13 +79,16 @@ function Books() {
 
   useEffect(() => {
     const fetchBooks = async () => {
-      const result = await allBookApi();
+      const result = await allBookApi(searchKey);
+      
       const bookData = result.data;
       setAllBookData(bookData);
+      
+      
     };
    
     fetchBooks();
-  }, [addResponse,editResponse,deleteResponse]);
+  }, [addResponse,editResponse,deleteResponse,searchKey]);
 
   return (
     <div className='row p-3'>
